@@ -1,0 +1,166 @@
+ALGORITHME Garage_Automobile
+
+BUT : Entrer les informations d'un garage et de différentes voitures et afficher la compositions de ces garages. 
+Puis afficher le garage possèdant le plus de voiture. Puis afficher la moyenne des véhicules par garage. 
+Puis afficher le véhicule le plus cher en valeur neuf et en cote argus après 3 ans.
+ENTRER : Les informations concernant les voitures, les informations concernant les garages
+SORTIE : La composition des garages, le garage possèdant le plus de voiture, la moyenne des véhicules, le véhicule le plus cher
+
+CONST
+	NBG<-2
+
+// Création du TYPE de l'adresse.
+	
+TYPE mail = enregistrement
+	num		= ENTIER
+	voie	= CHAINE
+	CP		= ENTIER
+	Ville	= CHAINE
+	Pays	= CHAINE
+	tel		= ENTIER
+	email	= CHAINE	
+FINENREGISTREMENT
+
+// Procédure de vérification de l'email.
+
+Procedure verif [email:mail]
+var
+	test = verif
+	long = ENTIER
+DEBUT
+	long<- LONGUEUR(email)
+FIN
+
+// Création du TYPE des garages.
+
+TYPE garage = enregistrement
+	nom = CHAINE
+	adresse = mail
+	cap_max = ENTIER
+FINENREGISTREMENT
+
+// Création du TYPE énuméré de l'énergie utilisée.
+
+TYPE power = (Essence,Diesel,GPL,Electrique,Hybride)
+
+	var
+		x = power
+	DEBUT
+		x <- ALEATOIRE(power)
+	FIN
+
+// Création du TYPE énuméré des marques de voitures.	
+	
+TYPE brand = (Audi,Ford,Peugeot,Citroen,Subaru)
+
+	var
+		x = brand
+	DEBUT
+		x <- ALEATOIRE(power)
+	FIN
+	
+// Création du TYPE des voitures.
+	
+TYPE voiture = enregistrement
+	marque			= brand
+	modele			= CHAINE
+	energie 		= power
+	puis_fisc 		= ENTIER
+	puis_dyn 		= ENTIER
+	couleur 		= CHAINE
+	options 		= CHAINE
+	annee			= ENTIER
+	prix			= CHAINE
+	cote_argus		= CHAINE
+	mise_circ		= CHAINE
+	age				= ENTIER
+	immatri			= CHAINE
+	
+FINENREGISTREMENT
+
+var
+	i : ENTIER
+	MonTab:Tableau [1..NBG] de garage
+	
+DEBUT
+	ECRIRE "Veuillez entrer les informations sur les deux garages"
+	POUR i<-1 A NBG FAIRE
+		ECRIRE "Garage ",i," :"
+		ECRIRE "Numero de rue :"
+		Lire(MonTab[i].num) 
+		ECRIRE "Voie :"
+		Lire(MonTab[i].voie)  
+		ECRIRE "Code Postal :"
+		Lire(MonTab[i].CP)  
+		ECRIRE "Ville :"
+		Lire(MonTab[i].Ville)  
+		ECRIRE "Pays :"
+		Lire(MonTab[i].Pays)  
+		ECRIRE "Telephone :"
+		Lire(MonTab[i].tel) 
+		ECRIRE "E-mail :"
+		Lire(MonTab[i].email)  
+		verif
+	FINPOUR
+	
+	ECRIRE "Veuillez entrer les informations sur les voitures du garages 1"
+	REPETER
+		ECRIRE "Marque :"
+		Lire(MonTab[1].marque) 
+		ECRIRE "Modele :"
+		Lire(MonTab[1].modele)
+		ECRIRE "Energie :"		
+		Lire(MonTab[1].energie)
+		ECRIRE "Puissance Fiscale :"		
+		Lire(MonTab[1].puis_fisc)  
+		ECRIRE "Marque :"
+		Lire(MonTab[1].puis_dyn)  
+		ECRIRE "Couleur :"
+		Lire(MonTab[1].couleur) 
+		ECRIRE "Options :"
+		Lire(MonTab[1].options) 
+		ECRIRE "Annee :"
+		Lire(MonTab[1].annee)
+		ECRIRE "Prix :"
+		Lire(MonTab[1].prix) 
+		ECRIRE "Cote Argus :"
+		Lire(MonTab[1].cote_argus) 
+		ECRIRE "Mise en circulation du vehicule :"
+		Lire(MonTab[1].mise_circ) 
+		ECRIRE "Age :"
+		Lire(MonTab[1].age)
+		ECRIRE "Immatriculation :"
+		Lire(MonTab[1].immatri)   
+	JUSQU'A Montab=0
+
+	ECRIRE "Veuillez entrer les informations sur les voitures du garages 2"
+	REPETER
+		ECRIRE "Marque :"
+		Lire(MonTab[2].marque) 
+		ECRIRE "Modele :"
+		Lire(MonTab[2].modele)
+		ECRIRE "Energie :"		
+		Lire(MonTab[2].energie)
+		ECRIRE "Puissance Fiscale :"		
+		Lire(MonTab[2].puis_fisc)  
+		ECRIRE "Marque :"
+		Lire(MonTab[2].puis_dyn)  
+		ECRIRE "Couleur :"
+		Lire(MonTab[2].couleur) 
+		ECRIRE "Options :"
+		Lire(MonTab[2].options) 
+		ECRIRE "Annee :"
+		Lire(MonTab[2].annee)
+		ECRIRE "Prix :"
+		Lire(MonTab[2].prix) 
+		ECRIRE "Cote Argus :"
+		Lire(MonTab[2].cote_argus) 
+		ECRIRE "Mise en circulation du vehicule :"
+		Lire(MonTab[2].mise_circ) 
+		ECRIRE "Age :"
+		Lire(MonTab[2].age)
+		ECRIRE "Immatriculation :"
+		Lire(MonTab[2].immatri)   
+	JUSQU'A Montab=0
+FIN
+	
